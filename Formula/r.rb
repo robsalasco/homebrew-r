@@ -36,12 +36,16 @@ class R < Formula
 
     # Fix cairo detection with Quartz-only cairo from https://github.com/yoursdearboy/homebrew-r/blob/master/Formula/r.rb
     inreplace ["configure", "m4/cairo.m4"], "cairo-xlib.h", "cairo.h"
+    
+    #Add X11 discover 
+    ENV.append 'CFLAGS', "-I /opt/X11/include" 
+    ENV.append 'CXXFLAGS', "-I /opt/X11/include" 
 
     args = [
       "--prefix=#{prefix}",
       "--enable-memory-profiling",
       "--with-cairo",
-      "--without-x",
+      "--with-x",
       "--with-aqua",
       "--with-lapack",
       "--enable-R-shlib",
