@@ -41,7 +41,7 @@ class R < Formula
       "--prefix=#{prefix}",
       "--enable-memory-profiling",
       "--with-cairo",
-      "--with-x",
+      "--without-x",
       "--with-aqua",
       "--with-lapack",
       "--enable-R-shlib",
