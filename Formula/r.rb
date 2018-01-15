@@ -13,9 +13,9 @@ class R < Formula
   depends_on "pcre"
   depends_on "readline"
   depends_on "xz"
+  depends_on "cairo"
   depends_on "openblas" => :optional
   depends_on :java => :optional
-  depends_on "cairo" => :optional
 
 
   # needed to preserve executable permissions on files without shebangs
@@ -33,6 +33,9 @@ class R < Formula
        MacOS::Xcode.version >= "8.0"
       ENV["ac_cv_have_decl_clock_gettime"] = "no"
     end
+
+    # Fix cairo detection with Quartz-only cairo from https://github.com/yoursdearboy/homebrew-r/blob/master/Formula/r.rb
+    inreplace ["configure", "m4/cairo.m4"], "cairo-xlib.h", "cairo.h"
 
     args = [
       "--prefix=#{prefix}",
