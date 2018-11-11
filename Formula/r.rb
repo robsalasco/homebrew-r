@@ -1,9 +1,15 @@
 class R < Formula
   desc "Software environment for statistical computing"
   homepage "https://www.r-project.org/"
-  url "https://cran.r-project.org/src/base/R-3/R-3.5.0.tar.gz"
-  sha256 "fd1725535e21797d3d9fea8963d99be0ba4c3aecadcf081b43e261458b416870"
-  revision 1
+  url "https://cran.r-project.org/src/base/R-3/R-3.5.1.tar.gz"
+  sha256 "0463bff5eea0f3d93fa071f79c18d0993878fd4f2e18ae6cf22c1639d11457ed"
+
+  bottle do
+    sha256 "7b0dc8ab038b82baa8961a5ca4fd78efcc53b34ada5953657b3b6faded7359a3" => :mojave
+    sha256 "4cdfd2024463182b97053abf06d8e575a3b2cc9b432255f1a5398da3fd067515" => :high_sierra
+    sha256 "de63492e498039f4724b5565fb9f6591f1b8639ed01bce78d92eefb579526ef4" => :sierra
+    sha256 "20d6f0a9f62ef08f7ddc7dc3cf731681f35ea0757ffb42b6c63c6c472d147240" => :el_capitan
+  end
 
   depends_on "pkg-config" => :build
   depends_on "gcc" # for gfortran
@@ -13,18 +19,16 @@ class R < Formula
   depends_on "pcre"
   depends_on "readline"
   depends_on "xz"
-  depends_on "cairo"
-  depends_on "openblas" => :optional
   depends_on :java => :optional
-
+  depends_on "openblas" => :optional
 
   # needed to preserve executable permissions on files without shebangs
   skip_clean "lib/R/bin"
 
   resource "gss" do
-    url "https://cloud.r-project.org/src/contrib/gss_2.1-8.tar.gz", :using => :nounzip
-    mirror "https://mirror.las.iastate.edu/CRAN/src/contrib/gss_2.1-8.tar.gz"
-    sha256 "176cce8ddd939afb9ec3de6c731d13fbff38bc8f0291cf9c7aa4bf35491084bc"
+    url "https://cloud.r-project.org/src/contrib/gss_2.1-9.tar.gz", :using => :nounzip
+    mirror "https://mirror.las.iastate.edu/CRAN/src/contrib/gss_2.1-9.tar.gz"
+    sha256 "2961fe61c1d3bb3fe7b8e1070d6fb1dfc5d71e0c6e8a6b7c46ff6b42867c4cf3"
   end
 
   def install
