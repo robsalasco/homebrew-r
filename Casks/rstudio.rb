@@ -1,5 +1,5 @@
 cask 'rstudio' do
-  version '1.2.1091'
+  version '1.2.1114'
   sha256 '9791812818f46ca767ed928eaac94d6ef497217836f7c42adf57b7957d00b3db'
 
   # rstudio.org was verified as official when first introduced to the cask
